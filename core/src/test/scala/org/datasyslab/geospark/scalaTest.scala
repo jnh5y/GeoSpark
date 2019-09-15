@@ -26,7 +26,7 @@
 
 package org.datasyslab.geospark
 
-import com.vividsolutions.jts.geom.{Coordinate, Envelope, GeometryFactory}
+import org.locationtech.jts.geom.{Coordinate, Envelope, GeometryFactory}
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.serializer.KryoSerializer
 import org.apache.spark.storage.StorageLevel
@@ -89,7 +89,7 @@ class scalaTest extends FunSpec with BeforeAndAfterAll {
     }
 
     it("should pass spatial range query") {
-      val objectRDD = new PointRDD(sc, PointRDDInputLocation, PointRDDOffset, PointRDDSplitter, false)
+      val objectRDD: PointRDD = new PointRDD(sc, PointRDDInputLocation, PointRDDOffset, PointRDDSplitter, false)
       for (i <- 1 to eachQueryLoopTimes) {
         val resultSize = RangeQuery.SpatialRangeQuery(objectRDD, rangeQueryWindow, false, false).count
       }
