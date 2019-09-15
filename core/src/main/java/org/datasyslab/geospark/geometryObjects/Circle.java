@@ -383,6 +383,12 @@ public class Circle
         return cloneCircle;// return the clone
     }
 
+    // JNH This might need attention:)
+    @Override
+    protected Geometry copyInternal() {
+        return null;
+    }
+
     /* (non-Javadoc)
      * @see org.locationtech.jts.geom.Geometry#equalsExact(org.locationtech.jts.geom.Geometry, double)
      */
@@ -493,6 +499,12 @@ public class Circle
         if (mbr.getMaxX() > env.getMaxX()) { return 1; }
         if (mbr.getMaxY() < env.getMaxY()) { return -1; }
         if (mbr.getMaxY() > env.getMaxY()) { return 1; }
+        return 0;
+    }
+
+    // JNH This might need attention:)
+    @Override
+    protected int getSortIndex() {
         return 0;
     }
 
